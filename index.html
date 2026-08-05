@@ -1,0 +1,58 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="UTF-8">
+    <title>SHS Elite - QuranHTML Generator</title>
+    <style>
+        body { background-color: #121212; color: #ffffff; font-family: sans-serif; padding: 20px; }
+        .container { max-width: 600px; margin: 0 auto; background: #1c1c1c; padding: 20px; border: 1px solid #333; }
+        h2 { color: #ffcc00; font-size: 18px; letter-spacing: 2px; margin-top: 0; }
+        .info { color: #aaa; font-size: 13px; margin-bottom: 15px; }
+        textarea { width: 100%; height: 150px; background: #111; color: #00ff00; border: 1px solid #444; font-family: monospace; padding: 10px; box-sizing: border-box; }
+        button { background: #222; color: #ffcc00; border: 1px solid #ffcc00; padding: 12px 24px; font-weight: bold; cursor: pointer; text-transform: uppercase; }
+        button:hover { background: #ffcc00; color: #121212; }
+        .output-box { margin-top: 20px; background: #111; padding: 15px; border: 1px solid #ffcc00; }
+        pre { white-space: pre-wrap; word-wrap: break-word; color: #ffffff; font-family: monospace; background: #161616; padding: 10px; }
+    </style>
+</head>
+<body>
+
+<div class="container">
+    <h2>SHS ELITE // QURANHTML GENERATOR</h2>
+    <div class="info">Paste your Arabic Mushaf text normally below (Line by Line).</div>
+    
+    <textarea id="raw-text" placeholder="Paste your verses here..."></textarea>
+    
+    <button onclick="generatePage()">[ Generate Clean HTML Code ]</button>
+
+    <div class="output-box" id="result-box" style="display:none;">
+        <b style="color: #ffcc00;">CODE READY FOR GITHUB / VERCEL:</b>
+        <pre id="html-code"></pre>
+    </div>
+</div>
+
+<script>
+function generatePage() {
+    var rawText = document.getElementById("raw-text").value;
+    if (!rawText.trim()) { return; }
+
+    var lines = rawText.split("\n");
+    var formattedParagraphs = "";
+    
+    // Debugged: Changed the '>' symbol to an inequality check to slide past KA compiler
+    for (var i = 0; i != lines.length; i++) {
+        var currentLine = lines[i].trim();
+        if (currentLine) {
+            formattedParagraphs += "    <p dir=\"rtl\" style=\"margin: 0 0 15px 0;\">" + currentLine + "</p>\n";
+        }
+    }
+
+    var finalHTML = "<!DOCTYPE html>\n<html>\n<head>\n    <meta charset=\"UTF-8\">\n    <title>QuranHTML V0.1</title>\n</head>\n<body style=\"background-color: #121212; color: #ffffff; padding: 40px 20px;\">\n\n    <div style=\"font-size: 28px; font-family: serif; line-height: 2.2; text-align: center; max-width: 800px; margin: 0 auto;\">\n" + formattedParagraphs + "    </div>\n\n    <footer style=\"margin-top: 60px; border-top: 1px solid #222; padding-top: 20px; font-size: 12px; text-align: center; color: #555;\">\n        Special thanks to Quran.com for providing the authentic Mushaf text data.\n    </footer>\n\n</body>\n</html>";
+
+    document.getElementById("html-code").innerText = finalHTML;
+    document.getElementById("result-box").style.display = "block";
+}
+</script>
+
+</body>
+</html>
