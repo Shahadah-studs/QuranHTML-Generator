@@ -32,4 +32,4 @@ This project deliberately bypasses bloated backend frameworks, Python servers, o
 Developed, engineered, and maintained with care by **Shahadah Studios Elite** 👑.  
 *Crafting efficient, standalone software architectures.*
 
-**Note: you can Copy the text from <a href="https://Quran.com">Quran</a> and paste it on our AI generator, then pick out the code it gives you and put it in wherever you want, and done!**
+**Note: you can Copy the text from a Surah of <a href="https://Quran.com">Quran.com</a> and paste it on our AI generator, then pick out the code it gives you and put it in wherever you want, and done!**
